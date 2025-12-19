@@ -1,6 +1,6 @@
-# Parse Text API
+# TextScraperElite
 
-This project is a simple API that allows users to upload text files, which are then parsed to remove new lines and return the cleaned data. 
+TextScraperElite — API to parse customer text files and return cleaned text (newlines removed).
 
 ## Features
 
@@ -11,68 +11,160 @@ This project is a simple API that allows users to upload text files, which are t
 ## Project Structure
 
 ```
-parse-text-api
+TextScraperElite
 ├── src
-│   ├── app.ts                # Main entry point of the application
-│   ├── server.ts             # Starts the server and listens for requests
+│   ├── app.ts
+│   ├── server.ts
 │   ├── controllers
-│   │   └── uploadController.ts # Handles file upload logic
+│   │   └── uploadController.ts
 │   ├── routes
-│   │   └── uploadRoutes.ts    # Defines routes for file uploads
+│   │   └── uploadRoutes.ts
 │   ├── services
-│   │   └── parseService.ts     # Contains the logic for parsing text
+│   │   └── parseService.ts
 │   ├── middleware
-│   │   └── uploadMiddleware.ts  # Middleware for handling uploads
+│   │   └── uploadMiddleware.ts
 │   ├── utils
-│   │   └── sanitizer.ts        # Utility functions for sanitizing input
+│   │   └── sanitizer.ts
 │   └── types
-│       └── index.d.ts         # Custom TypeScript types and interfaces
+│       └── index.d.ts
 ├── tests
-│   └── parseService.test.ts    # Unit tests for the ParseService
-├── package.json                # npm configuration file
-├── tsconfig.json               # TypeScript configuration file
-├── .env.example                # Example environment variables
-└── README.md                   # Project documentation
+│   └── parseService.test.ts
+├── package.json
+├── tsconfig.json
+├── .env.example
+└── README.md
 ```
 
 ## Installation
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   ```
-2. Navigate to the project directory:
-   ```
-   cd parse-text-api
-   ```
-3. Install the dependencies:
-   ```
-   npm install
-   ```
+1. Install dependencies:
+```
+npm install
+```
+
+2. Start in development:
+```
+npm run dev
+```
+
+3. Build and run:
+```
+npm run build
+npm start
+```
 
 ## Usage
 
-1. Start the server:
-   ```
-   npm start
-   ```
-2. Use an API client (like Postman) to upload a text file to the endpoint:
-   ```
-   POST /upload
-   ```
-   Make sure to include the file in the request body.
+Health check (replace port if different):
+```
+curl http://localhost:3000/health
+```
+
+Upload a text file (multipart/form-data, field name "file"):
+```
+curl -X POST -F "file=@/path/to/customer.txt" http://localhost:3000/upload -H "Accept: application/json"
+```
+
+If the API accepts raw text:
+```
+curl -X POST http://localhost:3000/parse -H "Content-Type: text/plain" --data-binary @/path/to/customer.txt
+```
 
 ## API Endpoints
 
-- **POST /upload**: Uploads a text file and returns the cleaned text without new lines.
+- POST /upload — Uploads a text file and returns cleaned text (newlines removed).
+- GET /health — Health check.
 
 ## Testing
 
-To run the tests, use the following command:
+Run tests:
 ```
 npm test
 ```
 
 ## License
 
-This project is licensed under the MIT License.
+MIT
+```// filepath: /Users/stevieb/Typescript_express/parse-text-api/README.md
+# TextScraperElite
+
+TextScraperElite — API to parse customer text files and return cleaned text (newlines removed).
+
+## Features
+
+- Upload text files via API
+- Remove new lines from the uploaded text
+- Return cleaned text data
+
+## Project Structure
+
+```
+TextScraperElite
+├── src
+│   ├── app.ts
+│   ├── server.ts
+│   ├── controllers
+│   │   └── uploadController.ts
+│   ├── routes
+│   │   └── uploadRoutes.ts
+│   ├── services
+│   │   └── parseService.ts
+│   ├── middleware
+│   │   └── uploadMiddleware.ts
+│   ├── utils
+│   │   └── sanitizer.ts
+│   └── types
+│       └── index.d.ts
+├── tests
+│   └── parseService.test.ts
+├── package.json
+├── tsconfig.json
+├── .env.example
+└── README.md
+```
+
+## Installation
+
+1. Install dependencies:
+```
+npm install
+```
+
+2. Start in development:
+```
+npm run dev
+```
+
+3. Build and run:
+```
+npm run build
+npm start
+```
+
+## Usage
+
+Health check (replace port if different):
+```
+curl http://localhost:3000/health
+```
+
+Upload a text file (multipart/form-data, field name "file"):
+```
+curl -X POST -F "file=@/path/to/customer.txt" http://localhost:3000/upload -H "Accept: application/json"
+```
+
+If the API accepts raw text:
+```
+curl -X POST http://localhost:3000/parse -H "Content-Type: text/plain" --data-binary @/path/to/customer.txt
+```
+
+## API Endpoints
+
+- POST /upload — Uploads a text file and returns cleaned text (newlines removed).
+- GET /health — Health check.
+
+## Testing
+
+Run tests:
+```
+npm test

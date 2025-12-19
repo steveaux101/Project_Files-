@@ -8,6 +8,8 @@ const PORT = process.env.PORT || 3000;
 app.use(json());
 setUploadRoutes(app);
 
+// ...existing code...
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`TextScraperElite running on port ${PORT}`);
 });
+// ...existing code...
