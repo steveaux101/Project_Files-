@@ -1,0 +1,17 @@
+import express from 'express';
+import { json } from 'body-parser';
+import { setUploadRoutes } from './routes/uploadRoutes';
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(json());
+setUploadRoutes(app);
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+app.on('error', (err) => {
+  console.error('Server error:', err);
+});

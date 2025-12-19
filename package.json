@@ -1,0 +1,30 @@
+{
+  "name": "parse-text-api",
+  "version": "1.0.0",
+  "description": "An API for parsing text files and removing new lines.",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "ts-node src/server.ts",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "typescript": "^4.5.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/jest": "^26.0.0",
+    "@types/multer": "^1.4.7",
+    "jest": "^27.0.0",
+    "ts-jest": "^27.0.0"
+  },
+  "keywords": [
+    "api",
+    "text",
+    "parser",
+    "upload"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
